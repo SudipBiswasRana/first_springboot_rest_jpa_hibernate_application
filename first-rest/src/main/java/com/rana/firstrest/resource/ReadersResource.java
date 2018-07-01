@@ -55,7 +55,7 @@ public class ReadersResource {
 		return resource;
 	}
 
-	@DeleteMapping
+	@DeleteMapping("/readers/{id}")
 	public void deleteReader(@PathVariable int id) {
 		readersRepo.deleteById(id);
 	}
@@ -69,7 +69,7 @@ public class ReadersResource {
 		return ResponseEntity.created(location).build();
 	}
 
-	@GetMapping
+	@GetMapping("/readers/{id}/comments")
 	public List<Comments> retrieveAllComments(@PathVariable int id) {
 		Optional<Readers> optionalReaders = readersRepo.findById(id);
 		if (!optionalReaders.isPresent()) {
